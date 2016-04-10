@@ -35,8 +35,8 @@ if __name__ == "__main__":
 					line_counter+=1
 					test_pointer+=1
 
-		#make_word_counter_list()
-		#classifier()
+		make_word_counter_list()
+		classifier()
 
 		make_vocabulary()
 		make_bigram_counter_list()

@@ -85,8 +85,8 @@ def the_actual_program():
 		elif sentence[0] == "-":
 			neg_class += 1
 
-	print "positive_classes = ", pos_class
-	print "negative_classes = ", neg_class
+	#print "positive_classes = ", pos_class
+	#print "negative_classes = ", neg_class
 
 	pos_add_one = math.log(1.0/(unigram_Count_Positive + uni_V))
 	neg_add_one = math.log(1.0/(unigram_Count_Negative + uni_V))
@@ -136,25 +136,25 @@ def the_actual_program():
 					if(word2 in bigram_vocabulary[word1].keys() and word2 in positive_class_prob_bigram[word1].keys()):
 						positive_probability += math.log(positive_class_prob_bigram[word1][word2])
 						bigram_flag = 1
-				'''
+				
 				if(bigram_flag == 0):
 					if word2 in positive_class_prob_unigram.keys():
 						positive_probability += math.log(positive_class_prob_unigram[word2])
 					else:
 						positive_probability += float(pos_add_one)
-				'''
+				
 				bigram_flag = 0
 				if(word1 in bigram_vocabulary.keys() and word1 in negative_class_prob_bigram.keys()):
 					if(word2 in bigram_vocabulary[word1].keys() and word2 in negative_class_prob_bigram[word1].keys()):
 						negative_probability += math.log(negative_class_prob_bigram[word1][word2])
 						bigram_flag = 1
-				'''
+				
 				if(bigram_flag == 0):
 					if word2 in negative_class_prob_unigram.keys():
 						negative_probability += math.log(negative_class_prob_unigram[word2])
 					else:
 						negative_probability += float(neg_add_one)
-				'''
+				
 		if(positive_probability >= negative_probability):
 			final_predicted_list.append("+")
 		else:
