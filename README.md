@@ -20,4 +20,5 @@ Course assignment for Natural Processing Language
   $ sudo pip install -U scipy
   ```
 
-### Average accuracy obtained = 92.57%
+### Average accuracy obtained considering only unigrams = 92.57%
+### Average accuracy obtained considering bigrams with unigrams but without interpolation = 86.43%
