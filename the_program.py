@@ -48,8 +48,8 @@ def the_actual_program():
 		elif sentence[0] == "-":
 			neg_class += 1
 
-	print "positive_classes = ", pos_class
-	print "negative_classes = ", neg_class
+	#print "positive_classes = ", pos_class
+	#print "negative_classes = ", neg_class
 
 	pos_add_one = math.log(1.0/(Count_Positive + V))
 	neg_add_one = math.log(1.0/(Count_Negative + V))
@@ -101,4 +101,6 @@ def the_actual_program():
 			total_count += 1
 
 	accuracy = float(hit_count)/total_count
+	test_data.close()
+	training_data.close()
 	return accuracy
