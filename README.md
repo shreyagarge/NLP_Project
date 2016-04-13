@@ -21,4 +21,4 @@ Course assignment for Natural Processing Language
   ```
 
 ### Average accuracy obtained considering only unigrams = 92.57%
-### Average accuracy obtained considering bigrams with unigrams but without interpolation = 86.43%
+### Average accuracy obtained considering bigrams with unigrams but without interpolation = 91.92%
