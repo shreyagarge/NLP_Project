@@ -11,9 +11,11 @@ import numpy as np
 
 if __name__ == "__main__":
 	accuracy = []
-
+	program_counter = 1
 	kf = KFold(1000, n_folds=10, shuffle=True)
 	for train, test in kf:
+		print program_counter
+		program_counter += 1
 		line_counter = 0
 		train_pointer = 0
 		test_pointer = 0

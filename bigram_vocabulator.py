@@ -13,7 +13,7 @@ def make_vocabulary():
 		for i in range(1, len(sentence)):
 			word1 = sentence[i-1]
 			word2 = sentence[i]
-			if((word1 != "+" or word1 != "-" or word1 != "") and (word2!= "+" or word2 != "-" or word2 != "")):
+			if((word1 != "+" and word1 != "-" and word1 != "" and word1 != "\n") and (word2!= "+" and word2 != "-" and word2 != "" and word2 != "\n")):
 				if word1 in bigram_counter.keys():
 					if word2 in bigram_counter[word1].keys():
 						bigram_counter[word1][word2] = str( int(bigram_counter[word1][word2]) + 1)
@@ -23,6 +23,28 @@ def make_vocabulary():
 					bigram_counter[word1] = {}
 					bigram_counter[word1][word2] = '1'
 
+	sorted_bigram_list = []
+	for word1 in bigram_counter.keys():
+		for word2 in bigram_counter[word1].keys():
+			sorted_bigram_list.append([word1, word2, int(bigram_counter[word1][word2])])
+
+	sorted_bigram_list.sort(key = lambda x: x[2], reverse = True)
+	#print sorted_bigram_list
+
+	
+	counter = 0
+	for each_tuple in sorted_bigram_list:
+		if counter == 100:
+			break
+		counter += 1
+		if(each_tuple[0] in final_list.keys()):
+			final_list[each_tuple[0]][each_tuple[1]] = str(each_tuple[2])
+		else:
+			final_list[each_tuple[0]] = {}
+			final_list[each_tuple[0]][each_tuple[1]] = str(each_tuple[2])
+
+	#print final_list
+	'''
 	for word1 in bigram_counter.keys():
 		#sorted_bigram_voc = sorted(bigram_counter[word1].items(), key = lambda x: int(operator.itemgetter(1)(x)), reverse=True) # sort according to decreasing word_count
 		for word2 in bigram_counter[word1].keys():
@@ -32,8 +54,8 @@ def make_vocabulary():
 				else:
 					final_list[word1] = {}
 					final_list[word1][word2] = bigram_counter[word1][word2]
-
+	'''
 	with open('bigram_vocabulary.pickle', 'wb') as handle:
 		pickle.dump(final_list, handle)
-
+	
 make_vocabulary()
